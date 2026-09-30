@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Africar - Reliable transport solutions for business, travel and everything in between</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #eef2ef;
+      color: #1a202c;
+      line-height: 1.6;
+      padding: 30px 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Newsletter Card Container (narrower to match design) */
+    .newsletter-container {
+      max-width: 1000px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Header Logo on Left Side */
+    .header-logo {
+      padding: 18px 28px;
+      background: #fafcfa;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+    }
+
+    /* thin green accent below header like the example */
+    .header-logo::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 6px;
+      background: linear-gradient(90deg,#0b7a4a,#00b16a);
+    }
+
+    .header-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    /* Banner Image */
+    .banner-wrapper {
+      width: 100%;
+      line-height: 0;
+    }
+
+    .banner-wrapper img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Editorial Content */
+    .content-body {
+      padding: 44px 48px 36px 48px;
+    }
+
+    .main-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+
+    .paragraph {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    /* Highlight Statement Box */
+    .highlight-box {
+      background-color: #f7fff6;
+      border: 1px solid #e6f6ea;
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .highlight-box p {
+      font-size: 15px;
+      font-weight: 700;
+      color: #04422f;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Image Wrapper */
+    .media-card {
+      margin: 22px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e6eef0;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+      line-height: 0;
+    }
+
+    .media-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      display: block;
+    }
+
+    /* Specific mask for the 'man sitting' photo to hide small blemishes (star). */
+    .media-card.man-photo { position: relative; }
+    .media-card.man-photo .star-mask {
+      position: absolute;
+      /* default position — adjust with inline styles if needed */
+      left: 56px;
+      top: 18px;
+      width: 34px;
+      height: 34px;
+      background: rgba(7,16,12,0.85);
+      transform: rotate(45deg);
+      border-radius: 6px;
+      box-shadow: 0 8px 18px rgba(2,6,10,0.45);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* Section: Why Africar (Clean heading with NO line) */
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0b2317;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 36px;
+      margin-bottom: 20px;
+      padding-top: 24px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    /* Points in green with the vertical line accent */
+    .feature-item {
+      background-color: #ffffff;
+      border: 1px solid #e6eef0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .feature-item h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0b2a18;
+      margin-bottom: 6px;
+    }
+
+    .feature-item p {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .feature-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
+
+    /* Section: Planning Your Next Journey */
+    .cta-section {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #edf2f7;
+    }
+
+    .cta-heading {
+      font-size: 20px;
+      font-weight: 900;
+      color: #0b2317;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+    }
+
+    .cta-subtext {
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .cta-action {
+      font-size: 17px;
+      font-weight: 900;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .cta-contact {
+      font-size: 16px;
+      font-weight: 700;
+      color: #009B60;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-contact a {
+      color: #009B60;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .cta-contact a:hover {
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    /* Footer Image */
+    .footer-image-wrapper {
+      width: 100%;
+      line-height: 0;
+      display: block;
+    }
+
+    /* New footer (replaces old footer image). Footer is clickable to africar.rw
+       while keeping email and phone links accessible on top. */
+    .site-footer {
+      width: 100%;
+      color: #ffffff;
+      padding: 36px 40px 56px 56px;
+      position: relative;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      overflow: hidden;
+      /* Use a plain dark green background instead of the image so words/logos are gone */
+      background-color: #12321d;
+      /* subtle textured overlay to mimic the original look without text/logos */
+      background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(180deg, rgba(5,24,12,0.06), rgba(0,0,0,0.06));
+      background-size: 18px 18px, 100% 100%;
+      background-position: center;
+    }
+
+    .site-footer .footer-inner {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      max-width: 880px;
+    }
+
+    .site-footer .logo { flex: 0 0 auto; }
+    .site-footer .logo img { height: 150px; display:block; margin-top:1px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35)); }
+
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-left: 40px; }
+
+    .contact-item { display: flex; gap: 24px; align-items: center; color: #ffffff; }
+    .contact-item a { color: #ffffff; text-decoration: none; }
+    .contact-item a.website { color: #012215; font-weight:800; }
+
+.icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(180deg, #1f8a5a, #0e5f3e);
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  /* soft glow */
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.icon-wrap::before {
+  content: '';
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 10px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.icon-wrap svg {
+  width: 22px;
+  height: 22px;
+
+  stroke: #ffffff;
+  stroke-width: 1.8;
+
+  position: relative;
+  z-index: 2;
+}
+.icon-wrap img {
+  filter: brightness(0) invert(1);
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+    .footer-cta { margin-left: auto; text-align: right; }
+    .footer-cta a.button { background: #00b16a; color: white; padding: 12px 18px; border-radius: 10px; font-weight: 800; text-decoration: none; display:inline-block; }
+
+    /* Footer overlay link covers the footer but contact links remain on top */
+    .footer-link-overlay { position: absolute; inset: 0; z-index: 1; }
+    .site-footer .footer-inner, .site-footer .contact-list, .site-footer .footer-cta { position: relative; z-index: 2; }
+
+    /* Smaller screens */
+    @media (max-width: 600px) {
+      .site-footer { padding: 28px; }
+      .site-footer .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-cta { width:100%; margin-left:0; text-align:left; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px 6px;
+      }
+      .content-body {
+        padding: 22px 18px;
+      }
+      .header-logo {
+        padding: 18px 20px;
+      }
+      .header-logo img {
+        height: 38px;
+      }
+      .main-title {
+        font-size: 19px;
+      }
+      .cta-heading, .section-title {
+        font-size: 18px;
+      }
+    }
+
+    /* ===== MOVED CSS (was outside) ===== */
+    /* (No changes, just placed correctly inside style tag) */
+
+  </style>
+</head>
+<body>
+
+  <!-- Newsletter Container -->
+  <div class="newsletter-container">
+
+    <header class="header-logo">
+      <img src="africarLogo.png" alt="Africar - Going beyond adventure">
+    </header>
+
+    <div class="banner-wrapper">
+      <img src="LINKED-IN.jpg.jpeg" alt="Your Perfect Ride Awaits.">
+    </div>
+
+    <main class="content-body">
+      
+      <h1 class="main-title">
+        Title: Reliable transport solutions for business, travel and everything in between.
+      </h1>
+
+      <p class="paragraph">
+        Whether it's an airport transfer, a day full of meetings, a site visit, a team trip or a weekend exploring Rwanda, getting from one place to another shouldn't become another thing to manage.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          Africar provides flexible car rental and transport solutions designed around your journey.
+        </p>
+      </div>
+
+      <p class="paragraph">
+        With options for self-drive, chauffeur services, business travel, trips and multi-vehicle bookings, we help individuals, businesses, NGOs, institutions and visiting professionals move around Rwanda with ease.
+      </p>
+
+      <div class="media-card">
+        <img src="RWANDA-COMPLETE-SAFARI-750x450.png" alt="Africar Safari in Rwanda">
+      </div>
+
+      <section>
+        <h2 class="section-title">WHY AFRICAR?</h2>
+
+        <div class="feature-item">
+          <h3>Flexible Solutions</h3>
+          <p>Choose the transport option that works best for your plans and schedule.</p>
+        </div>
+
+        <div class="feature-item">
+          <h3>A Diverse Fleet</h3>
+          <p>From everyday drives to longer trips and group travel, we have vehicles to suit different needs.</p>
+        </div>
+
+        <div class="feature-item">
+          <h3>Convenient Service</h3>
+          <p>One trusted partner to help make getting around Rwanda easier.</p>
+        </div>
+      </section>
+
+      <div class="media-card man-photo">
+        <img src="image_4451ac7.jpg.jpeg" alt="Executive Travel in Rwanda">
+        <div class="star-mask" aria-hidden="true"></div>
+      </div>
+
+      <section class="cta-section">
+        <h2 class="cta-heading">PLANNING YOUR NEXT JOURNEY?</h2>
+        
+        <p class="cta-subtext">
+          Whether you're travelling for business or taking some time to explore, let Africar take care of the rest.
+        </p>
+
+        <h3 class="cta-action">BOOK YOUR NEXT RIDE HERE</h3>
+
+        <div class="cta-contact">
+          <a href="tel:+250788352003">+250 788 352 003</a>
+          <span>·</span>
+          <a href="https://africar.rw" target="_blank">www.africar.rw</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer" aria-label="Africar contact footer">
+  <div class="footer-inner" style="display:flex; flex-direction:column; align-items:flex-start; gap:28px;">
+
+    <!-- Logo -->
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div class="logo">
+        <img src="africar.png" alt="Africar logo">
+      </div>
+    </div>
+
+    <!-- Contact List -->
+    <ul class="contact-list" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:22px;">
+
+      <!-- Email -->
+      <li class="contact-item">
+        <span class="icon-wrap" aria-hidden="true">
+            <img src="mail.svg" alt="email icon">
+        </span>
+        <a href="mailto:info@africar.rw" style="font-size:24px;font-weight:800;color:#ffffff;text-decoration:none;">
+          info@africar.rw
+        </a>
+      </li>
+
+      <!-- Phone -->
+      <li class="contact-item">
+        <span class="icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M22 16.92V21a1 1 0 0 1-1.11 1 19 19 0 0 1-8.63-3.16 19 19 0 0 1-6-6A19 19 0 0 1 2.06 3.11 1 1 0 0 1 3 2h4.09a1 1 0 0 1 1 .75c.12.66.34 1.3.64 1.9a1 1 0 0 1-.24 1.05L7.91 8.91a15 15 0 0 0 6 6l1.2-1.2a1 1 0 0 1 1.05-.24c.6.3 1.24.52 1.9.64a1 1 0 0 1 .75 1V22z"/>
+          </svg>
+        </span>
+        <a href="tel:+250788352003" style="font-size:24px;font-weight:800;color:#ffffff;text-decoration:none;">
+          +250 788 352 003
+        </a>
+      </li>
+
+      <!-- Website -->
+      <li class="contact-item">
+        <span class="icon-wrap" aria-hidden="true">
+         <span class="icon-wrap" aria-hidden="true">
+            <img src="globe.svg" alt="website icon">
+            </span>
+        </span>
+        <a class="website" href="https://africar.rw/" target="_blank" rel="noopener"
+           style="font-size:24px;font-weight:800;color:#ffff;text-decoration:none;">
+          www.africar.rw
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</footer>
+  </div>
+
+</body>
+</html>

@@ -39,44 +39,59 @@
       border: 1px solid #e2e8f0;
     }
 
-    /* Header Logo on Left Side */
+    /* 1. Header Logo Exactly 50/50 Centered on Page */
     .header-logo {
-      padding: 28px 48px;
+      width: 100%;
+      padding: 26px 0;
       background: #fafcfa;
       border-bottom: 1px solid #edf2f7;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .header-logo img {
-      height: 48px;
+      height: 50px;
       width: auto;
       display: block;
+      margin: 0 auto;
     }
 
-    /* Banner Image */
+    /* 2. Banner Image with Increased Height */
     .banner-wrapper {
       width: 100%;
+      height: 300px;
+      overflow: hidden;
       line-height: 0;
+      background: #020B06;
     }
 
     .banner-wrapper img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
 
     /* Editorial Content */
     .content-body {
-      padding: 44px 48px 36px 48px;
+      padding: 44px 44px 36px 44px;
     }
 
+    /* Main Title: Prominently BIGGER than Subtitles, strictly 1 single line */
     .main-title {
-      font-size: 22px;
-      font-weight: 800;
+      font-size: clamp(15px, 2.18vw, 22.5px);
+      font-weight: 900;
       color: #0f172a;
-      line-height: 1.35;
-      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: -0.15px;
+      line-height: 1.25;
+      margin-bottom: 22px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .paragraph {
@@ -103,7 +118,7 @@
       margin: 0;
     }
 
-    /* Image Wrapper */
+    /* Safari Image Wrapper */
     .media-card {
       margin: 26px 0;
       border-radius: 14px;
@@ -119,9 +134,9 @@
       display: block;
     }
 
-    /* Section: Why Africar (Clean heading with NO line) */
+    /* Section: Why Africar (Subtitle - 17px) */
     .section-title {
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 900;
       color: #0f172a;
       text-transform: uppercase;
@@ -132,14 +147,34 @@
       border-top: 1px solid #edf2f7;
     }
 
-    /* Feature Items */
+    /* 3. Why Africar Two Columns */
+    .why-africar-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+
+    .why-africar-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Points in exact Africar Green with vertical line accent */
     .feature-item {
       background-color: #f8faf9;
       border: 1px solid #e2e8f0;
       border-left: 5px solid #1B382A;
       border-radius: 14px;
       padding: 18px 20px;
-      margin-bottom: 14px;
+      margin-bottom: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       transition: all 0.2s ease;
     }
 
@@ -161,74 +196,36 @@
       margin: 0;
     }
 
-    /* Section: Planning Your Next Journey */
-    .cta-section {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid #edf2f7;
+    /* Executive Image on Right Side of Why Africar */
+    .why-africar-image {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      min-height: 280px;
     }
 
-    .cta-heading {
-      font-size: 20px;
-      font-weight: 900;
-      color: #0f172a;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
+    .why-africar-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    .cta-subtext {
-      font-size: 15px;
-      color: #334155;
-      line-height: 1.7;
-      margin-bottom: 22px;
-    }
-
-    .cta-action {
-      font-size: 17px;
-      font-weight: 900;
-      color: #0f172a;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-
-    .cta-contact {
-      font-size: 16px;
-      font-weight: 700;
-      color: #1B382A;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .cta-contact a {
-      color: #1B382A;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-
-    .cta-contact a:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-
-    /* Professional Coded Footer (Pure CSS background - No baked-in text overlap) */
+    /* 4. Professional Combined Grand Footer (Balanced Layout) */
     .site-footer {
       background-color: #1B382A;
-      background-image: radial-gradient(circle at 85% 30%, rgba(46, 117, 83, 0.3) 0%, transparent 60%),
+      background-image: radial-gradient(circle at 85% 30%, rgba(46, 117, 83, 0.35) 0%, transparent 60%),
                         radial-gradient(circle at 15% 85%, rgba(13, 34, 23, 0.5) 0%, transparent 60%);
       color: #ffffff;
       padding: 44px 52px;
     }
 
-    /* Brand Logo (NOT clickable) */
-    .footer-brand {
-      user-select: none;
-      pointer-events: none;
-      margin-bottom: 24px;
-      display: inline-block;
+    /* Top Brand Logo Banner */
+    .footer-top-brand {
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      margin-bottom: 28px;
     }
 
     .footer-logo {
@@ -236,13 +233,53 @@
       width: auto;
       filter: brightness(0) invert(1);
       display: block;
+      user-select: none;
+      pointer-events: none;
     }
 
-    /* Clean 3-Item Contact Stack */
+    /* Two Symmetrical Head-to-Head Columns */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Footer Subtitles - 17px */
+    .footer-heading {
+      font-size: 17px;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .footer-subtext {
+      font-size: 15px;
+      color: rgba(209, 250, 229, 0.85);
+      line-height: 1.65;
+      max-width: 440px;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.15);
+      padding-left: 36px;
+    }
+
     .footer-contacts-stack {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     .contact-link-row {
@@ -293,6 +330,21 @@
     }
 
     /* Responsive */
+    @media (max-width: 768px) {
+      .why-africar-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .footer-right {
+        border-left: none;
+        padding-left: 0;
+      }
+      .banner-wrapper {
+        height: 200px;
+      }
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 10px 6px;
@@ -301,22 +353,16 @@
         padding: 22px 18px;
       }
       .site-footer {
-        padding: 32px 24px;
-      }
-      .header-logo {
-        padding: 18px 20px;
+        padding: 36px 24px;
       }
       .header-logo img {
-        height: 38px;
+        height: 40px;
       }
       .contact-link-row {
         font-size: 15px;
       }
-      .main-title {
-        font-size: 19px;
-      }
-      .cta-heading, .section-title {
-        font-size: 18px;
+      .section-title, .footer-heading {
+        font-size: 16px;
       }
     }
   </style>
@@ -326,12 +372,12 @@
   <!-- Newsletter Container (1000px) -->
   <div class="newsletter-container">
 
-    <!-- Header Logo on Left Side -->
+    <!-- 1. Header Logo Exactly 50/50 Centered on Page -->
     <header class="header-logo">
       <img src="africarLogo.png" alt="Africar - Going beyond adventure">
     </header>
 
-    <!-- Top Banner Image -->
+    <!-- 2. Top Banner Image (Prominent Height) -->
     <div class="banner-wrapper">
       <img src="LINKED-IN.jpg.jpeg" alt="Your Perfect Ride Awaits.">
     </div>
@@ -339,8 +385,9 @@
     <!-- Main Content -->
     <main class="content-body">
       
-      <h1 class="main-title">
-        Title: Reliable transport solutions for business, travel and everything in between.
+      <!-- Main Title: Prominently BIGGER than Subtitles (22.5px vs 17px), strictly 1 line -->
+      <h1 class="main-title" title="RELIABLE TRANSPORT SOLUTIONS FOR BUSINESS, TRAVEL AND EVERYTHING IN BETWEEN.">
+        RELIABLE TRANSPORT SOLUTIONS FOR BUSINESS, TRAVEL AND EVERYTHING IN BETWEEN.
       </h1>
 
       <p class="paragraph">
@@ -363,88 +410,93 @@
         <img src="RWANDA-COMPLETE-SAFARI-750x450.png" alt="Africar Safari in Rwanda">
       </div>
 
-      <!-- Why Africar? (Clean heading with NO line) -->
+      <!-- 3. Why Africar? (2 Columns: Feature Cards on Left, Executive Passenger Image on Right) -->
       <section>
         <h2 class="section-title">WHY AFRICAR?</h2>
 
-        <div class="feature-item">
-          <h3>Flexible Solutions</h3>
-          <p>Choose the transport option that works best for your plans and schedule.</p>
-        </div>
+        <div class="why-africar-grid">
+          
+          <!-- Left Column: 3 Feature Items -->
+          <div class="why-africar-list">
+            <div class="feature-item">
+              <h3>Flexible Solutions</h3>
+              <p>Choose the transport option that works best for your plans and schedule.</p>
+            </div>
 
-        <div class="feature-item">
-          <h3>A Diverse Fleet</h3>
-          <p>From everyday drives to longer trips and group travel, we have vehicles to suit different needs.</p>
-        </div>
+            <div class="feature-item">
+              <h3>A Diverse Fleet</h3>
+              <p>From everyday drives to longer trips and group travel, we have vehicles to suit different needs.</p>
+            </div>
 
-        <div class="feature-item">
-          <h3>Convenient Service</h3>
-          <p>One trusted partner to help make getting around Rwanda easier.</p>
-        </div>
-      </section>
+            <div class="feature-item">
+              <h3>Convenient Service</h3>
+              <p>One trusted partner to help make getting around Rwanda easier.</p>
+            </div>
+          </div>
 
-      <!-- Executive Passenger Image -->
-      <div class="media-card">
-        <img src="image_4451ac7.jpg.jpeg" alt="Executive Travel in Rwanda">
-      </div>
+          <!-- Right Column: Executive Passenger Image -->
+          <div class="why-africar-image">
+            <img src="image_4451ac7.jpg.jpeg" alt="Executive Travel in Rwanda">
+          </div>
 
-      <!-- Planning Your Next Journey? -->
-      <section class="cta-section">
-        <h2 class="cta-heading">PLANNING YOUR NEXT JOURNEY?</h2>
-        
-        <p class="cta-subtext">
-          Whether you're travelling for business or taking some time to explore, let Africar take care of the rest.
-        </p>
-
-        <h3 class="cta-action">BOOK YOUR NEXT RIDE HERE</h3>
-
-        <!-- Contact Links -->
-        <div class="cta-contact">
-          <a href="tel:+250788352003" title="Call Africar">+250 788 352 003</a>
-          <span>·</span>
-          <a href="https://africar.rw/" target="_blank" rel="noopener noreferrer" title="Visit Africar website">www.africar.rw</a>
         </div>
       </section>
 
+      <!-- End of Editorial Content -->
     </main>
 
-    <!-- Professional Coded Footer (Clean Background & Logo NOT clickable) -->
+    <!-- 4. Professional Combined Grand Footer (Top Logo, Balanced Columns) -->
     <footer class="site-footer">
       
-      <!-- Top: Static Brand Logo & Tagline (NOT clickable) -->
-      <div class="footer-brand">
+      <!-- Top: Brand Logo (Static, NOT clickable as requested) -->
+      <div class="footer-top-brand">
         <img src="africarLogo.png" alt="Africar - Going beyond adventure" class="footer-logo">
       </div>
 
-      <!-- Three Clean Contact Rows in Professional Icon Badges -->
-      <div class="footer-contacts-stack">
+      <div class="footer-grid">
         
-        <!-- 1. Email: info@africar.rw -->
-        <a href="mailto:info@africar.rw" class="contact-link-row" title="Send email to info@africar.rw">
-          <div class="contact-badge">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          </div>
-          <span>info@africar.rw</span>
-        </a>
+        <!-- Left Side: Planning Your Next Journey -->
+        <div class="footer-left">
+          <h2 class="footer-heading">PLANNING YOUR NEXT JOURNEY?</h2>
+          <p class="footer-subtext">
+            Whether you're travelling for business or taking some time to explore, let Africar take care of the rest.
+          </p>
+        </div>
 
-        <!-- 2. Phone: +250 788 352 003 -->
-        <a href="tel:+250788352003" class="contact-link-row" title="Call Africar at +250 788 352 003">
-          <div class="contact-badge">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          </div>
-          <span>+250 788 352 003</span>
-        </a>
+        <!-- Right Side: Book Your Next Ride Here + 3 Contact Rows -->
+        <div class="footer-right">
+          <h3 class="footer-heading">BOOK YOUR NEXT RIDE HERE</h3>
 
-        <!-- 3. Website: www.africar.rw -->
-        <a href="https://africar.rw/" target="_blank" rel="noopener noreferrer" class="contact-link-row" title="Visit https://africar.rw/">
-          <div class="contact-badge">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          <div class="footer-contacts-stack">
+            
+            <!-- 1. Email: info@africar.rw -->
+            <a href="mailto:info@africar.rw" class="contact-link-row" title="Send email to info@africar.rw">
+              <div class="contact-badge">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <span>info@africar.rw</span>
+            </a>
+
+            <!-- 2. Phone: +250 788 352 003 -->
+            <a href="tel:+250788352003" class="contact-link-row" title="Call Africar at +250 788 352 003">
+              <div class="contact-badge">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <span>+250 788 352 003</span>
+            </a>
+
+            <!-- 3. Website: www.africar.rw -->
+            <a href="https://africar.rw/" target="_blank" rel="noopener noreferrer" class="contact-link-row" title="Visit https://africar.rw/">
+              <div class="contact-badge">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </div>
+              <span>www.africar.rw</span>
+            </a>
+
           </div>
-          <span>www.africar.rw</span>
-        </a>
+        </div>
 
       </div>
-
     </footer>
 
   </div>

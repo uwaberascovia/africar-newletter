@@ -18,25 +18,34 @@
       padding: 0;
     }
 
+    /* Fixed & Locked: Eliminates any left/right swaying */
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     body {
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #eef2ef;
       color: #1a202c;
       line-height: 1.6;
       padding: 30px 15px;
-      display: flex;
-      justify-content: center;
+      margin: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
 
-    /* Newsletter Card Container (1000px Width) */
+    /* Newsletter Card Container (Locked Stable Centering: No sideways drift) */
     .newsletter-container {
       max-width: 1000px;
       width: 100%;
+      margin: 0 auto;
       background: #ffffff;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       border: 1px solid #e2e8f0;
+      box-sizing: border-box;
     }
 
     /* 1. Header Logo Exactly 50/50 Centered on Page */
@@ -58,20 +67,21 @@
       margin: 0 auto;
     }
 
-    /* 2. Banner Image with Increased Height */
+    /* 2. Banner Image: Automatically crops off bottom contact strip */
     .banner-wrapper {
       width: 100%;
-      height: 300px;
+      height: 270px;
       overflow: hidden;
       line-height: 0;
       background: #020B06;
+      position: relative;
     }
 
     .banner-wrapper img {
       width: 100%;
-      height: 100%;
+      height: 130%;
       object-fit: cover;
-      object-position: center;
+      object-position: top center;
       display: block;
     }
 
@@ -80,15 +90,17 @@
       padding: 44px 44px 36px 44px;
     }
 
-    /* Main Title: 100% Complete, Bigger than Subtitles, Fits cleanly on 1 line */
+    /* Main Title: Full Complete Headline, Big & Bold, NEVER Cut Off */
     .main-title {
-      font-size: clamp(15px, 1.95vw, 19.5px);
+      font-size: 23px;
       font-weight: 900;
       color: #0f172a;
       text-transform: uppercase;
       letter-spacing: -0.2px;
       line-height: 1.35;
       margin-bottom: 22px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
     .paragraph {
@@ -144,7 +156,7 @@
       border-top: 1px solid #edf2f7;
     }
 
-    /* 3. Why Africar Two Columns */
+    /* 3. Why Africar Two Columns (Aligned perfectly with points top & bottom) */
     .why-africar-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -158,6 +170,7 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 12px;
+      height: 100%;
     }
 
     /* Points in exact Africar Green with vertical line accent */
@@ -166,7 +179,7 @@
       border: 1px solid #e2e8f0;
       border-left: 5px solid #1B382A;
       border-radius: 14px;
-      padding: 18px 20px;
+      padding: 16px 20px;
       margin-bottom: 0;
       flex: 1;
       display: flex;
@@ -183,7 +196,7 @@
       font-size: 16px;
       font-weight: 800;
       color: #1B382A;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .feature-item p {
@@ -193,48 +206,33 @@
       margin: 0;
     }
 
-    /* Executive Image on Right Side of Why Africar */
+    /* Executive Image on Right Side of Why Africar (Starts & ends with points) */
     .why-africar-image {
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      min-height: 280px;
+      height: 100%;
+      line-height: 0;
+      display: flex;
     }
 
     .why-africar-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: 38% center;
       display: block;
     }
 
-    /* 4. Professional Combined Grand Footer (Balanced Layout) */
+    /* 4. Professional Combined Grand Footer (Solid Uniform #1B382A Color) */
     .site-footer {
       background-color: #1B382A;
-      background-image: radial-gradient(circle at 85% 30%, rgba(46, 117, 83, 0.35) 0%, transparent 60%),
-                        radial-gradient(circle at 15% 85%, rgba(13, 34, 23, 0.5) 0%, transparent 60%);
       color: #ffffff;
-      padding: 44px 52px;
+      padding: 44px 50px;
     }
 
-    /* Top Brand Logo Banner */
-    .footer-top-brand {
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-      margin-bottom: 28px;
-    }
-
-    .footer-logo {
-      height: 48px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      display: block;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    /* Two Symmetrical Head-to-Head Columns */
+    /* Footer Grid: Both Columns Aligned on Same Top Baseline */
     .footer-grid {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -245,7 +243,22 @@
     .footer-left {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      user-select: none;
+      pointer-events: none;
+      display: block;
+    }
+
+    .footer-logo {
+      height: 46px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      display: block;
+      user-select: none;
+      pointer-events: none;
     }
 
     /* Footer Subtitles - 17px */
@@ -268,7 +281,7 @@
     .footer-right {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
       border-left: 1px solid rgba(255, 255, 255, 0.15);
       padding-left: 36px;
     }
@@ -338,7 +351,7 @@
         padding-left: 0;
       }
       .banner-wrapper {
-        height: 200px;
+        height: 190px;
       }
     }
 
@@ -350,13 +363,16 @@
         padding: 22px 18px;
       }
       .site-footer {
-        padding: 36px 24px;
+        padding: 32px 20px;
       }
       .header-logo img {
         height: 40px;
       }
       .contact-link-row {
         font-size: 15px;
+      }
+      .main-title {
+        font-size: 19px;
       }
       .section-title, .footer-heading {
         font-size: 16px;
@@ -366,7 +382,7 @@
 </head>
 <body>
 
-  <!-- Newsletter Container (1000px) -->
+  <!-- Newsletter Container (Locked Stable Centering) -->
   <div class="newsletter-container">
 
     <!-- 1. Header Logo Exactly 50/50 Centered on Page -->
@@ -374,7 +390,7 @@
       <img src="africarLogo.png" alt="Africar - Going beyond adventure">
     </header>
 
-    <!-- 2. Top Banner Image (Prominent Height) -->
+    <!-- 2. Top Banner Image (Clean Fleet Banner, Contact Strip Permanently Cropped) -->
     <div class="banner-wrapper">
       <img src="LINKED-IN.jpg.jpeg" alt="Your Perfect Ride Awaits.">
     </div>
@@ -382,7 +398,7 @@
     <!-- Main Content -->
     <main class="content-body">
       
-      <!-- Main Title: Complete, Bolder than Subtitle, Fits on 1 line -->
+      <!-- Main Title: Complete, Bolder than Subtitle, Never Cut Off -->
       <h1 class="main-title">
         RELIABLE TRANSPORT SOLUTIONS FOR BUSINESS, TRAVEL AND EVERYTHING IN BETWEEN.
       </h1>
@@ -407,7 +423,7 @@
         <img src="RWANDA-COMPLETE-SAFARI-750x450.png" alt="Africar Safari in Rwanda">
       </div>
 
-      <!-- 3. Why Africar? (2 Columns: Feature Cards on Left, Executive Passenger Image on Right) -->
+      <!-- 3. Why Africar? (Image starts & ends with points) -->
       <section>
         <h2 class="section-title">WHY AFRICAR?</h2>
 
@@ -431,7 +447,7 @@
             </div>
           </div>
 
-          <!-- Right Column: Executive Passenger Image -->
+          <!-- Right Column: Executive Seated Man (Starts & ends where points start & end) -->
           <div class="why-africar-image">
             <img src="image_4451ac7.jpg.jpeg" alt="Executive Travel in Rwanda">
           </div>
@@ -442,22 +458,22 @@
       <!-- End of Editorial Content -->
     </main>
 
-    <!-- 4. Professional Combined Grand Footer (Top Logo, Balanced Columns) -->
+    <!-- 4. Combined Grand Footer (Logo inside Left Column above Planning, aligned with Right Column) -->
     <footer class="site-footer">
-      
-      <!-- Top: Brand Logo (Static, NOT clickable as requested) -->
-      <div class="footer-top-brand">
-        <img src="africarLogo.png" alt="Africar - Going beyond adventure" class="footer-logo">
-      </div>
-
       <div class="footer-grid">
         
-        <!-- Left Side: Planning Your Next Journey -->
+        <!-- Left Side: Logo above Planning Your Next Journey -->
         <div class="footer-left">
-          <h2 class="footer-heading">PLANNING YOUR NEXT JOURNEY?</h2>
-          <p class="footer-subtext">
-            Whether you're travelling for business or taking some time to explore, let Africar take care of the rest.
-          </p>
+          <div class="footer-brand">
+            <img src="africarLogo.png" alt="Africar - Going beyond adventure" class="footer-logo">
+          </div>
+
+          <div>
+            <h2 class="footer-heading">PLANNING YOUR NEXT JOURNEY?</h2>
+            <p class="footer-subtext">
+              Whether you're travelling for business or taking some time to explore, let Africar take care of the rest.
+            </p>
+          </div>
         </div>
 
         <!-- Right Side: Book Your Next Ride Here + 3 Contact Rows -->

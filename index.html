@@ -67,10 +67,10 @@
       margin: 0 auto;
     }
 
-    /* 2. Banner Image: Automatically crops off bottom contact strip */
+    /* 2. Banner: Increased Prominent Height (300px) with Contact Text Masked */
     .banner-wrapper {
       width: 100%;
-      height: 270px;
+      height: 300px;
       overflow: hidden;
       line-height: 0;
       background: #020B06;
@@ -79,10 +79,22 @@
 
     .banner-wrapper img {
       width: 100%;
-      height: 130%;
+      height: 100%;
       object-fit: cover;
-      object-position: top center;
+      object-position: center top;
       display: block;
+    }
+
+    /* Seamless mask to completely remove the contact text strip from the picture */
+    .banner-wrapper::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(2, 11, 6, 0) 0%, rgba(2, 11, 6, 0.95) 35%, #020B06 100%);
+      pointer-events: none;
     }
 
     /* Editorial Content */
@@ -90,9 +102,10 @@
       padding: 44px 44px 36px 44px;
     }
 
-    /* Main Title: Full Complete Headline, Big & Bold, NEVER Cut Off */
-    .main-title {
-      font-size: 23px;
+    /* Both Section Titles: Exact Same Size, Weight, Color & Typography */
+    .main-title,
+    .section-title {
+      font-size: 22px;
       font-weight: 900;
       color: #0f172a;
       text-transform: uppercase;
@@ -103,11 +116,17 @@
       overflow-wrap: break-word;
     }
 
+    .section-title {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #edf2f7;
+    }
+
     .paragraph {
       font-size: 15px;
       color: #334155;
       line-height: 1.7;
-      margin-bottom: 18px;
+      margin-bottom: 0;
     }
 
     /* Highlight Statement Box in Exact Africar Green (#1B382A) */
@@ -115,7 +134,7 @@
       background-color: #f3f7f5;
       border-left: 4px solid #1B382A;
       padding: 16px 20px;
-      margin: 22px 0;
+      margin: 0;
       border-radius: 0 12px 12px 0;
     }
 
@@ -127,9 +146,27 @@
       margin: 0;
     }
 
-    /* Safari Image Wrapper */
-    .media-card {
-      margin: 26px 0;
+    /* Top Story 2 Columns: Left Safari Picture, Right Text (Starts & ends together) */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .intro-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .intro-media-col {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
@@ -137,23 +174,15 @@
       line-height: 0;
     }
 
-    .media-card img {
+    .intro-media-col img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
       display: block;
-    }
-
-    /* Section: Why Africar (Subtitle - 17px) */
-    .section-title {
-      font-size: 17px;
-      font-weight: 900;
-      color: #0f172a;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-top: 36px;
-      margin-bottom: 20px;
-      padding-top: 24px;
-      border-top: 1px solid #edf2f7;
     }
 
     /* 3. Why Africar Two Columns (Aligned perfectly with points top & bottom) */
@@ -208,16 +237,21 @@
 
     /* Executive Image on Right Side of Why Africar (Starts & ends with points) */
     .why-africar-image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      height: 100%;
       line-height: 0;
-      display: flex;
     }
 
     .why-africar-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -261,7 +295,7 @@
       pointer-events: none;
     }
 
-    /* Footer Subtitles - 17px */
+    /* Footer Subtitles */
     .footer-heading {
       font-size: 17px;
       font-weight: 900;
@@ -341,17 +375,22 @@
 
     /* Responsive */
     @media (max-width: 768px) {
+      .intro-grid,
       .why-africar-grid,
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 28px;
+      }
+      .intro-media-col,
+      .why-africar-image {
+        min-height: 260px;
       }
       .footer-right {
         border-left: none;
         padding-left: 0;
       }
       .banner-wrapper {
-        height: 190px;
+        height: 220px;
       }
     }
 
@@ -371,11 +410,15 @@
       .contact-link-row {
         font-size: 15px;
       }
-      .main-title {
+      .main-title,
+      .section-title {
         font-size: 19px;
       }
-      .section-title, .footer-heading {
-        font-size: 16px;
+      .banner-wrapper {
+        height: 180px;
+      }
+      .banner-wrapper::after {
+        height: 44px;
       }
     }
   </style>
@@ -390,7 +433,7 @@
       <img src="africarLogo.png" alt="Africar - Going beyond adventure">
     </header>
 
-    <!-- 2. Top Banner Image (Clean Fleet Banner, Contact Strip Permanently Cropped) -->
+    <!-- 2. Top Banner Image (300px Prominent Height, Bottom Contact Strip Completely Masked) -->
     <div class="banner-wrapper">
       <img src="LINKED-IN.jpg.jpeg" alt="Your Perfect Ride Awaits.">
     </div>
@@ -398,32 +441,40 @@
     <!-- Main Content -->
     <main class="content-body">
       
-      <!-- Main Title: Complete, Bolder than Subtitle, Never Cut Off -->
+      <!-- Main Title: Same size & font as Why Africar -->
       <h1 class="main-title">
         RELIABLE TRANSPORT SOLUTIONS FOR BUSINESS, TRAVEL AND EVERYTHING IN BETWEEN.
       </h1>
 
-      <p class="paragraph">
-        Whether it's an airport transfer, a day full of meetings, a site visit, a team trip or a weekend exploring Rwanda, getting from one place to another shouldn't become another thing to manage.
-      </p>
+      <!-- Top Story: 2 Columns (Left: Safari Picture, Right: Text & Highlight) -->
+      <div class="intro-grid">
+        
+        <!-- Left Column: Safari Picture (Starts and Ends with the text) -->
+        <div class="intro-media-col">
+          <img src="RWANDA-COMPLETE-SAFARI-750x450.png" alt="Africar Safari in Rwanda">
+        </div>
 
-      <!-- Highlight Statement Box in Exact Africar Green (#1B382A) -->
-      <div class="highlight-box">
-        <p>
-          Africar provides flexible car rental and transport solutions designed around your journey.
-        </p>
+        <!-- Right Column: Story & Highlight Box -->
+        <div class="intro-text-col">
+          <p class="paragraph">
+            Whether it's an airport transfer, a day full of meetings, a site visit, a team trip or a weekend exploring Rwanda, getting from one place to another shouldn't become another thing to manage.
+          </p>
+
+          <!-- Highlight Statement Box in Exact Africar Green (#1B382A) -->
+          <div class="highlight-box">
+            <p>
+              Africar provides flexible car rental and transport solutions designed around your journey.
+            </p>
+          </div>
+
+          <p class="paragraph">
+            With options for self-drive, chauffeur services, business travel, trips and multi-vehicle bookings, we help individuals, businesses, NGOs, institutions and visiting professionals move around Rwanda with ease.
+          </p>
+        </div>
+
       </div>
 
-      <p class="paragraph">
-        With options for self-drive, chauffeur services, business travel, trips and multi-vehicle bookings, we help individuals, businesses, NGOs, institutions and visiting professionals move around Rwanda with ease.
-      </p>
-
-      <!-- Safari Image -->
-      <div class="media-card">
-        <img src="RWANDA-COMPLETE-SAFARI-750x450.png" alt="Africar Safari in Rwanda">
-      </div>
-
-      <!-- 3. Why Africar? (Image starts & ends with points) -->
+      <!-- 3. Why Africar? (Equal Title: Same size, font & style) -->
       <section>
         <h2 class="section-title">WHY AFRICAR?</h2>
 
